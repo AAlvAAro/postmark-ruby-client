@@ -14,7 +14,7 @@ module PostmarkClient
     #   )
     #
     # @example Sending an email with an Email model
-    #   email = PostmarkClient::Models::Email.new(
+    #   email = PostmarkClient::Email.new(
     #     from: "sender@example.com",
     #     to: "recipient@example.com",
     #     subject: "Hello!",
@@ -28,8 +28,8 @@ module PostmarkClient
     class Emails < Client::Base
       # Send a single email
       #
-      # @param email [Models::Email, Hash] the email to send
-      # @return [Models::EmailResponse] the API response
+      # @param email [Email, Hash] the email to send
+      # @return [EmailResponse] the API response
       #
       # @raise [ValidationError] if the email is invalid
       # @raise [ApiError] if the API returns an error
@@ -49,7 +49,7 @@ module PostmarkClient
         email.validate!
 
         response = post("/email", email.to_h)
-        Models::EmailResponse.new(response)
+        EmailResponse.new(response)
       end
 
       # Convenience method to send an email with parameters
@@ -68,7 +68,7 @@ module PostmarkClient
       # @option kwargs [String] :track_links link tracking setting
       # @option kwargs [Hash] :metadata custom metadata
       # @option kwargs [String] :message_stream message stream
-      # @return [Models::EmailResponse] the API response
+      # @return [EmailResponse] the API response
       #
       # @example
       #   response = emails.send_email(
@@ -79,7 +79,7 @@ module PostmarkClient
       #     track_opens: true
       #   )
       def send_email(from:, to:, subject:, **kwargs)
-        email = Models::Email.new(
+        email = Email.new(
           from: from,
           to: to,
           subject: subject,
@@ -90,8 +90,8 @@ module PostmarkClient
 
       # Send a batch of emails (up to 500)
       #
-      # @param emails [Array<Models::Email, Hash>] array of emails to send
-      # @return [Array<Models::EmailResponse>] array of API responses
+      # @param emails [Array<Email, Hash>] array of emails to send
+      # @return [Array<EmailResponse>] array of API responses
       #
       # @raise [ValidationError] if any email is invalid
       # @raise [ApiError] if the API returns an error
@@ -112,19 +112,19 @@ module PostmarkClient
         payload = normalized.map(&:to_h)
         responses = post("/email/batch", payload)
 
-        responses.map { |r| Models::EmailResponse.new(r) }
+        responses.map { |r| EmailResponse.new(r) }
       end
 
       private
 
       # Normalize email input to Email model
       #
-      # @param email [Models::Email, Hash] the email input
-      # @return [Models::Email] normalized email model
+      # @param email [Email, Hash] the email input
+      # @return [Email] normalized email model
       def normalize_email(email)
-        return email if email.is_a?(Models::Email)
+        return email if email.is_a?(Email)
 
-        Models::Email.new(**symbolize_keys(email))
+        Email.new(**symbolize_keys(email))
       end
 
       # Convert hash keys to symbols

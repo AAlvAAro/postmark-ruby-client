@@ -6,7 +6,7 @@ RSpec.describe PostmarkClient::Resources::Emails do
 
   describe "#send" do
     let(:email) do
-      PostmarkClient::Models::Email.new(
+      PostmarkClient::Email.new(
         from: "sender@example.com",
         to: "recipient@example.com",
         subject: "Test Subject",
@@ -26,7 +26,7 @@ RSpec.describe PostmarkClient::Resources::Emails do
 
         response = client.send(email)
 
-        expect(response).to be_a(PostmarkClient::Models::EmailResponse)
+        expect(response).to be_a(PostmarkClient::EmailResponse)
         expect(response.success?).to be(true)
         expect(response.message_id).to eq("abc123-def456-ghi789")
       end
@@ -105,7 +105,7 @@ RSpec.describe PostmarkClient::Resources::Emails do
 
     context "validation" do
       it "raises ValidationError for invalid email" do
-        invalid_email = PostmarkClient::Models::Email.new(from: "sender@example.com")
+        invalid_email = PostmarkClient::Email.new(from: "sender@example.com")
 
         expect { client.send(invalid_email) }.to raise_error(PostmarkClient::ValidationError)
       end
@@ -200,7 +200,7 @@ RSpec.describe PostmarkClient::Resources::Emails do
       responses = client.send_batch(emails)
 
       expect(responses.length).to eq(2)
-      expect(responses).to all(be_a(PostmarkClient::Models::EmailResponse))
+      expect(responses).to all(be_a(PostmarkClient::EmailResponse))
       expect(responses.first.to).to eq("b@example.com")
       expect(responses.last.to).to eq("c@example.com")
     end

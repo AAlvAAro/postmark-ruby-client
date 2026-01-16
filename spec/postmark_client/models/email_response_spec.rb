@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe PostmarkClient::Models::EmailResponse do
+RSpec.describe PostmarkClient::EmailResponse do
   describe "#initialize" do
     it "parses response attributes" do
       response = described_class.new(

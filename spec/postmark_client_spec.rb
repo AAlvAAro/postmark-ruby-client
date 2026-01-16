@@ -44,7 +44,7 @@ RSpec.describe PostmarkClient do
     end
 
     it "sends Email model" do
-      email = PostmarkClient::Models::Email.new(**email_hash)
+      email = PostmarkClient::Email.new(**email_hash)
 
       stub_request(:post, "https://api.postmarkapp.com/email")
         .to_return(

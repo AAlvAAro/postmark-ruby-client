@@ -20,7 +20,7 @@ require_relative "postmark_client/resources/emails"
 #   end
 #
 # @example Sending an email
-#   email = PostmarkClient::Models::Email.new(
+#   email = PostmarkClient::Email.new(
 #     from: "sender@example.com",
 #     to: "recipient@example.com",
 #     subject: "Hello!",
@@ -61,8 +61,8 @@ module PostmarkClient
 
     # Send an email using the default configuration
     #
-    # @param email [Models::Email, Hash] the email to send
-    # @return [Models::EmailResponse] the API response
+    # @param email [Email, Hash] the email to send
+    # @return [EmailResponse] the API response
     #
     # @example
     #   PostmarkClient.deliver(
@@ -72,7 +72,7 @@ module PostmarkClient
     #     text_body: "Hello, World!"
     #   )
     def deliver(email)
-      emails.send(email.is_a?(Hash) ? Models::Email.new(**email) : email)
+      emails.send(email.is_a?(Hash) ? Email.new(**email) : email)
     end
   end
 end

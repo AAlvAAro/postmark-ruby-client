@@ -74,7 +74,7 @@ end
 ### Using the Email Model
 
 ```ruby
-email = PostmarkClient::Models::Email.new(
+email = PostmarkClient::Email.new(
   from: "John Doe <john@example.com>",
   to: ["alice@example.com", "bob@example.com"],
   cc: "manager@example.com",
@@ -96,7 +96,7 @@ response = client.send(email)
 ### Adding Attachments
 
 ```ruby
-email = PostmarkClient::Models::Email.new(
+email = PostmarkClient::Email.new(
   from: "sender@example.com",
   to: "recipient@example.com",
   subject: "Files attached",
@@ -126,7 +126,7 @@ email.add_attachment(
 ### Custom Headers
 
 ```ruby
-email = PostmarkClient::Models::Email.new(
+email = PostmarkClient::Email.new(
   from: "sender@example.com",
   to: "recipient@example.com",
   subject: "Custom headers",
@@ -205,7 +205,7 @@ end
 
 ## API Reference
 
-### PostmarkClient::Models::Email
+### PostmarkClient::Email
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
@@ -225,7 +225,7 @@ end
 | `metadata` | Hash | Custom metadata key-value pairs |
 | `message_stream` | String | Message stream identifier |
 
-### PostmarkClient::Models::EmailResponse
+### PostmarkClient::EmailResponse
 
 | Method | Returns | Description |
 |--------|---------|-------------|

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe PostmarkClient::Models::Email do
+RSpec.describe PostmarkClient::Email do
   describe "#initialize" do
     it "creates an email with basic attributes" do
       email = described_class.new(
@@ -70,7 +70,7 @@ RSpec.describe PostmarkClient::Models::Email do
 
   describe "#add_attachment" do
     it "adds an Attachment instance" do
-      attachment = PostmarkClient::Models::Attachment.new(
+      attachment = PostmarkClient::Attachment.new(
         name: "test.txt",
         content: "test content",
         content_type: "text/plain"

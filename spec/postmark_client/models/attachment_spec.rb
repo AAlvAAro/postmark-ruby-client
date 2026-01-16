@@ -2,7 +2,7 @@
 
 require "base64"
 
-RSpec.describe PostmarkClient::Models::Attachment do
+RSpec.describe PostmarkClient::Attachment do
   describe "#initialize" do
     it "creates an attachment with basic attributes" do
       attachment = described_class.new(

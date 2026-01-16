@@ -17,7 +17,7 @@ end
 desc "Open an IRB console with the gem loaded"
 task :console do
   require "irb"
-  require "postmark_ruby_client"
+  require_relative "lib/postmark_client"
 
   ARGV.clear
   IRB.start

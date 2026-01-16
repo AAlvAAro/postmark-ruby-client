@@ -16,7 +16,6 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 3.2.0"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
-  spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
   spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/main/CHANGELOG.md"
   spec.metadata["rubygems_mfa_required"] = "true"
@@ -37,12 +36,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Runtime dependencies
-  spec.add_dependency "base64", ">= 0.1"
+  spec.add_dependency "base64", "~> 0.1"
   spec.add_dependency "faraday", ">= 2.0", "< 3.0"
   spec.add_dependency "faraday-multipart", "~> 1.0"
 
   # Development dependencies
-  spec.add_development_dependency "bundler", ">= 2.0"
+  spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.12"
   spec.add_development_dependency "webmock", "~> 3.19"
