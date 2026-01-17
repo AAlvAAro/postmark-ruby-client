@@ -1,6 +1,6 @@
 # postmark_ruby_client
 
-A clean, extensible Ruby client for the [Postmark](https://postmarkapp.com) transactional email API. Built with Faraday and designed for Rails 8+ applications.
+A clean, extensible Ruby client for the [Postmark](https://postmarkapp.com) transactional Email API (Not SMTP).
 
 ## Features
 
